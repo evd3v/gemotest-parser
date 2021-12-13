@@ -131,7 +131,7 @@ const getAnalysisData = async (analysis) => {
 
   const summary = $(html).find('.article > .issue > p').text().trim()
 
-  const description = generateAnalysisDescription($(html).find('#descr_title').nextAll())
+  const description = generateAnalysisDescription($, $(html).find('#descr_title').nextAll())
 
   const purpose = $(html).find('#when_title').next().text().trim()
 
@@ -158,7 +158,7 @@ const getAnalysisData = async (analysis) => {
   }
 }
 
-const generateAnalysisDescription = (nodes) => {
+const generateAnalysisDescription = ($, nodes) => {
   let description = ''
 
   nodes.each((index, el) => {
