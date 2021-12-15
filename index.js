@@ -3,6 +3,7 @@ const axios = require('axios')
 const cheerio = require('cheerio')
 
 const { performance } = require('perf_hooks')
+const { is } = require('cheerio/lib/api/traversing')
 
 const baseUrl = 'https://gemotest.ru'
 
@@ -162,7 +163,10 @@ const generateAnalysisDescription = ($, nodes) => {
   let description = ''
 
   nodes.each((index, el) => {
-    if (el.tagName === 'HR') {
+    const element = $(el)
+    const tagName = element[0].tagName || element[0].name
+
+    if (tagName === 'hr') {
       return false
     }
 
